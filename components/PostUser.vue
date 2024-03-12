@@ -17,7 +17,7 @@
                 muted
                 loop
                 class="aspect-[3/4] object-cover rounded-md"
-                src="/video.mp4"
+                src="./public/video.mp4"
             />
         </div>
 
