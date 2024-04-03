@@ -1,7 +1,7 @@
 <template>
     <div 
-        @mouseenter="$event => isHover(true)"
-        @mouseleave="$event => isHover(false)"
+        @mouseenter="isHover(true)"
+        @mouseleave="isHover(false)"
         class="relative brightness-90 hover:brightness-[1.1] cursor-pointer "
     >
         <div
@@ -17,7 +17,7 @@
                 muted
                 loop
                 class="aspect-[3/4] object-cover rounded-md"
-                src="./public/video.mp4"
+                src="/public/video.mp4"
             />
         </div>
 
