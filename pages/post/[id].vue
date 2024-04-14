@@ -13,7 +13,7 @@
             <div v-if="true">
                 <button 
                     :disabled="!isLoaded"
-                    @click="loopThroughPostsUp()"
+                    @click="$event => loopThroughPostsUp()"
                     class="absolute z-20 right-4 top-4 flex items-center justify-center rounded-full bg-gray-700 p-1.5 hover:bg-gray-800"
                 >
                     <Icon name="mdi:chevron-up" size="30" color="#FFFFFF"/>
@@ -37,7 +37,7 @@
             <video 
                 v-if="true"
                 class="absolute object-cover w-full my-auto z-[-1] h-screen"
-                src="/video.mp4"
+                src="/public/video.mp4"
             />
 
             <div 
@@ -66,7 +66,7 @@
             class="lg:max-w-[550px] relative w-full h-full bg-white"
         >
         
-            <div class="py-7"/>
+            <div class="py-7"></div>
 
             <div class="flex items-center justify-between px-8">
                 <div class="flex items-center">
@@ -109,7 +109,7 @@
 
             <div class="flex items-center px-8 mt-8">
                 <div class="pb-4 text-center flex items-center">
-                    <button class="rounded-full bg-gray-200 p-2 cursor-pointersor-">
+                    <button class="rounded-full bg-gray-200 p-2 cursor-pointer">
                         <Icon name="mdi:heart" size="25"/>
                     </button>
 
