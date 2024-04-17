@@ -54,7 +54,7 @@
                     loop
                     muted
                     class="h-screen mx-auto"
-                    src="video.mp4"
+                    src="/public/video.mp4"
                 />
             </div>
 
