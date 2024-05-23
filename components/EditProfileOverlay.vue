@@ -41,7 +41,46 @@
                             <input type="file" class="hidden" id="image" @input="getUploadedImage" accept="image/png, image/jpeg, image/jpg">
                         </div>
                     </div>
+
+                    <div class="flex flex-col border-b sm:h-[118px] px-1.5 py-2 mt-1.5 w-full" id="UsernameSection">
+                        <div class="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w[160px] sm:text-left text-center">
+                            Username
+                        </div>
+
+                        <div class="flex items-center justify-center sm:-mt-6">
+                            <div class="sm:w-[60%] w-full max-w-md">
+                                <TextInput
+                                    placeholder="Username"
+                                    v-model:input="userName"
+                                    inputType="text"
+                                    max="30"
+                                />
+                                <div class="mt-4 text-[11px] text-gray-500">
+                                    Usernames can only contain letters, numbers, underscores, and periods. 
+                                    Changing your username will also change your profile link.
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="flex flex-col sm:h[120px] px-1.5 py-2 mt-2 w-full" id="BioSection">
+                        <div class="font-semibold text-[15px] sm:mb-0 mb-1 text-gray-700 sm:w-[160px] sm:text-left text-center">
+                            Bio
+                        </div>
+                        <div class="flex items-center justify-center sm:-mt-6">
+                            <div class="w-full sm:w-[60%] max-w-md">
+                                <textarea 
+                                    cols="30" 
+                                    rows="4"
+                                    v-model="userBio"
+                                    maxlength="80"
+                                    class="resize-none w-full border border-gray-300 rounded-md py-2.5 px-3 text-gray-800 bg-[#f1f1f2] focus:outline-none"
+                                >
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
