@@ -1,7 +1,7 @@
 <template>
   <NuxtPage />
   <AuthOverlay v-if="isLoginOpen"/>
-  <EditProfileOverlay />
+  <EditProfileOverlay v-if="isEditProfileOpen"/>
 </template>
 
 

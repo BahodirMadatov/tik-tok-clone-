@@ -77,9 +77,46 @@
                                     class="resize-none w-full border border-gray-300 rounded-md py-2.5 px-3 text-gray-800 bg-[#f1f1f2] focus:outline-none"
                                 >
                                 </textarea>
+                                <div class="text-gray-500 text-[11px]" v-if="userBio">
+                                {{ userBio.length }}/80
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="w-full h-[430px]" v-else>
+                    <Cropper
+                        class="h-[430px]"
+                        ref="cropper"
+                        :stencil-component="CircleStencil"
+                        :src="uploadedImage"
+                    />
+                </div>
+            </div>
+
+            <div
+                id="ButtonSection"
+                class="absolute p-5 left-0 bottom-0 border-t border-t-gray-300 w-full"
+            >
+                <div
+                    id="UpdateInfoButton"
+                    v-if="!uploadedImage"
+                    class="flex items-center justify-end"
+                >
+                    <button
+                        @click="$event => $generalStore.isEditProfileOpen = false"
+                        class="flex items-center border rounded-sm px-3 py-[6px] hover:bg-gray-100"
+                    >
+                        <span class="px-2 font-semibold text-[15px]">Cancel</span>
+                    </button>
+
+                    <button
+                        @click="$event => cropAndUpdateImage()"
+                        class="flex items-center bg-[#F02C56] text-white border rounded-md ml-3 px-3 py-[6px]"
+                    >
+                    <span class="mx-4 font-medium text-[15px]">Apply</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -87,6 +124,44 @@
 </template>
 
 <script setup>
-const { generalStore } = useNuxtApp()
+import { Cropper, CircleStencil } from 'vue-advanced-cropper'
+import 'vue-advanced-cropper/dist/style.css';
+
+import { storeToRefs } from 'pinia';
+const { $generalStore, $userStore, $profileStore } = useNuxtApp()
+const { name, bio, image } = storeToRefs($userStore)
+
+onMounted(() => {
+    userName.value = name.value
+    userBio.value = bio.value
+    userImage.value = image.value
+})
+
+let cropper = ref(null)
 let uploadedImage = ref(null)
+let file = ref(null)
+let userName = ref(null)
+let userImage = ref(null)
+let userBio = ref(null)
+let isUploaded = ref(false)
+
+const getUploadedImage = (e) => {
+    file.value = e.target.files[0]
+    uploadedImage.value = URL.createObjectURL(file.value)
+}
+
+watch(() => userName.value, () => {
+    if (!userName.value || userName.value === name.value) {
+        isUpdated.value = false
+    } else {
+        isUpdated.value = true
+    }
+})
+watch(() => userBio.value, () => {
+    if (!userBio.value || userBio.value.length < 1) {
+        isUpdated.value = false
+    } else {
+        isUpdated.value = true
+    }
+})
 </script>
